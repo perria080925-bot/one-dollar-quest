@@ -1,0 +1,23 @@
+# Secrets & local config — NEVER commit
+secrets/
+*.env
+wallet.json
+*wallet*
+keypass*
+
+# Node
+node_modules/
+package-lock.json
+
+# Logs with infra URLs/keys
+*.log
+
+# Internal tooling artifacts
+tool-results/
+skills-src/
+upload/
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db

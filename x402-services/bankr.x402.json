@@ -1,0 +1,97 @@
+{
+  "network": "base",
+  "currency": "USDC",
+  "services": {
+    "market-signal": {
+      "description": "Crypto market snapshot + quantitative momentum signals (SMA7/SMA25 trend, RSI-14, annualized volatility) for any CoinGecko-listed coin. Built and deployed by an autonomous experimental AI agent. Data from public CoinGecko API with server-side quantitative computation. Informational only - not financial advice.",
+      "price": "0.001",
+      "methods": ["GET"],
+      "schema": {
+        "input": {
+          "type": "object",
+          "properties": {
+            "coin": {
+              "type": "string",
+              "description": "CoinGecko coin id, e.g. 'bitcoin', 'ethereum', 'solana', 'arbitrum'"
+            },
+            "vs": {
+              "type": "string",
+              "description": "Quote currency, e.g. 'usd', 'eur', 'mxn'. Default: usd"
+            }
+          },
+          "required": ["coin"]
+        },
+        "output": {
+          "type": "object",
+          "properties": {
+            "coin": { "type": "object", "description": "Coin identity: id, symbol, name" },
+            "price": { "type": "number", "description": "Current price in quote currency" },
+            "market_cap": { "type": "number", "description": "Market capitalization" },
+            "market_cap_rank": { "type": "number", "description": "Market cap rank" },
+            "volume_24h": { "type": "number", "description": "24h trading volume" },
+            "change_24h_pct": { "type": "number", "description": "24h price change in percent" },
+            "change_7d_pct": { "type": "number", "description": "7d price change in percent" },
+            "change_30d_pct": { "type": "number", "description": "30d price change in percent" },
+            "indicators": { "type": "object", "description": "sma7, sma25, trend (up/down), rsi14, rsi_zone, vol_annualized_pct" },
+            "disclaimer": { "type": "string", "description": "Informational-only notice" },
+            "generated_at": { "type": "string", "description": "ISO 8601 timestamp" }
+          }
+        }
+      }
+    },
+    "pair-scan": {
+      "description": "Aggregated DEX pair scan for any EVM token: total liquidity, 24h volume, churn, best pair price/FDV/volatility, up to 6 secondary pairs, across chains. DexScreener data. Built by an autonomous experimental AI agent. Raw data only - not financial advice.",
+      "price": "0.005",
+      "methods": ["GET"],
+      "schema": {
+        "input": {
+          "type": "object",
+          "properties": {
+            "token": { "type": "string", "description": "EVM token contract address, 0x-prefixed 40 hex chars" },
+            "chain": { "type": "string", "description": "Optional chain filter: 'base', 'arbitrum', 'bsc', 'polygon', 'ethereum', etc. Default: all chains" }
+          },
+          "required": ["token"]
+        },
+        "output": {
+          "type": "object",
+          "properties": {
+            "token": { "type": "object", "description": "Token identity: address, symbol, name" },
+            "pairs_found": { "type": "number", "description": "Number of DEX pairs found" },
+            "dexes": { "type": "array", "description": "DEX names hosting the token" },
+            "aggregate": { "type": "object", "description": "total_liquidity_usd, total_volume_24h_usd, churn_24h" },
+            "best_pair": { "type": "object", "description": "Deepest pair: chain, dex, price_usd, fdv, volume h1/h6/h24, price changes, txns, created_at" },
+            "other_pairs": { "type": "array", "description": "Up to 5 secondary pairs summary" },
+            "disclaimer": { "type": "string", "description": "Informational-only notice" },
+            "generated_at": { "type": "string", "description": "ISO 8601 timestamp" }
+          }
+        }
+      }
+    },
+    "token-safety": {
+      "description": "Heuristic rug/risk screen for any EVM token: transparent rule-based score (0-100) with auditable flags - pair age, liquidity depth, volume churn, price volatility, buy/sell imbalance. DexScreener data, methodology returned in every response. Built by an autonomous experimental AI agent. NOT a security audit, not financial advice.",
+      "price": "0.01",
+      "methods": ["GET"],
+      "schema": {
+        "input": {
+          "type": "object",
+          "properties": {
+            "token": { "type": "string", "description": "EVM token contract address, 0x-prefixed 40 hex chars" },
+            "chain": { "type": "string", "description": "Optional chain filter, e.g. 'base'. Default: all chains" }
+          },
+          "required": ["token"]
+        },
+        "output": {
+          "type": "object",
+          "properties": {
+            "token": { "type": "object", "description": "Token identity: address, symbol, name" },
+            "risk": { "type": "object", "description": "score_0_to_100 (higher=riskier), level (normal_range/elevated_risk/high_risk), flags[] with auditable rule names" },
+            "inputs_used": { "type": "object", "description": "All raw inputs the heuristics consumed, for full transparency" },
+            "methodology": { "type": "string", "description": "Plain-language description of the scoring rules" },
+            "disclaimer": { "type": "string", "description": "Heuristic-only notice, not an audit" },
+            "generated_at": { "type": "string", "description": "ISO 8601 timestamp" }
+          }
+        }
+      }
+    }
+  }
+}
