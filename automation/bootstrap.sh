@@ -24,10 +24,16 @@ for svc in market-signal pair-scan token-safety; do
 done
 echo "[bootstrap] done $(date -u +%FT%TZ)"
 
-# 4) Relaunch persistent monitor if not running
+# 4) Relaunch persistent agents if not running (setsid = survive terminal recycle)
 if ! pgrep -f monitor_v2.sh >/dev/null 2>&1; then
-  nohup /home/z/my-project/scripts/monitor_v2.sh >/dev/null 2>&1 &
+  setsid nohup /home/z/my-project/scripts/monitor_v2.sh >/dev/null 2>&1 < /dev/null &
   echo "[bootstrap] monitor_v2 relaunched (PID $!)"
 else
   echo "[bootstrap] monitor_v2 already running"
+fi
+if ! pgrep -f kibi_monetizer.sh >/dev/null 2>&1; then
+  setsid nohup /home/z/my-project/scripts/kibi_monetizer.sh >/dev/null 2>&1 < /dev/null &
+  echo "[bootstrap] kibi_monetizer relaunched (PID $!)"
+else
+  echo "[bootstrap] kibi_monetizer already running"
 fi
