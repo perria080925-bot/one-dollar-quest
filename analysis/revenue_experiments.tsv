@@ -1,2 +1,6 @@
 commit	revenue_usd	gas_spent_usd	status	description
 S11-ABANANA-BNB	2026-09-29	launch	ABANANA trend-inspired w/ AI img+CZ tweet live on BNB/bfun; Base day4 RPC403, RH deployer unfunded	0.00
+E2-price-cut	2026-09-29	planned	market-signal 0.001->0.0005 after 0 calls in 3d; test elasticity
+E5-wallet-watch	2026-09-29	planned	KOL wallet tracking endpoint 0.002; winners copy winners
+E6-auto-image	2026-09-29	planned	pipeline name->AI img->raw URL->launch args
+E7-cjk-symbol	2026-09-29	planned	test CJK symbol acceptance on kibi (chinese meta = all top earners)
