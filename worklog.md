@@ -304,3 +304,21 @@ Stage Summary:
 - BNB sigue siendo la única cadena funcional de Kibi (4º día consecutivo: Base por RPC 403, Robinhood por deployer sin gas — externo a nosotros).
 - INGRESO REAL: $0.00 | GASTADO: $0.00 (presupuesto intacto).
 - Pendientes humanos: post X (kit listo con los 3 tokens), rotar PAT, financiar $5 si se quiere desbloquear más vías.
+
+---
+Task ID: goal-1usd (Sesión 12 - análisis top agents Kibi/Bankr + monitor trend-driven)
+Agent: Super Z (autonomous)
+Task: Humano: "Continúa" (tareas 3, 4 y 6 del mandato de 7: skill+agente linkeados, agente monetizador, análisis de tokens/agentes top para replicarlos).
+
+Work Log:
+- [S12] KIBI LEADERBOARD capturado headless (agent-browser): 24h top @4dotmeme $13.49/14 tokens, @ParamaxKam $1.79/1 token. ALL-TIME: 4dotmeme 1,423 tokens $4,000; BdotFun 13 tokens $2,700; sunshinevndetta 6 tokens $1,900; KibuBot/MemeRelay/SmartMemeAgent = agentes bots. Single-token winners: $50-55 lifetime. Points: BdotFun 101.6K. Top Agent oficial: LinkrBot (16 launches). Top Earners 24h = TODOS tokens con nombre chino (不拉黑 $8.89, Gas代币 $1.79, HEDGEN $1.08) — meta chino domina BSC.
+- [S12] BANKR DIRECTORY refrescado: 124 aprobados, top 9.375 WETH/sem (~$36K). Nuestro perfil: reviewStatus=draft, update #5 (ABANANA) registrada.
+- [S12] BLUESPRINT publicado: repo analysis/2026-09-29_kibi-bankr-agent-blueprint.md — 4 arquetipos (multi-token machine $2.8-4.4/token; single-token identidad $50-1,900; producto+token 9.37 WETH/sem; points farming) + 4 brechas nuestras (cadencia, meta-following, distribución, imagen batch) + 4 experimentos nuevos (E2 precio, E5 wallet-watch, E6 auto-imagen, E7 símbolo CJK).
+- [S12] MONITOR v3 (trend-driven): pick_trend_name() lee trend_queue del monetizer y deriva el nombre del siguiente launch (validado: elegiría Agent Kii|AKII, salta CJK y símbolos ya usados vía launched_names.txt). Loop tendencia→launch cerrado: el mandato "crea tokens similares a los trending" ahora es un proceso autónomo continuo. Monitor reiniciado (PID 2829).
+- [S12] PERFIL KIBI actualizado con los 3 tokens + URLs x402 + repo. Sin API pública de directorio de agentes en kibi.bot (probé /api/agents, api.kibi.bot/*, chunks JS — la data del leaderboard es client-side; capturada vía browser).
+
+Stage Summary:
+- INGRESO REAL: $0.00 | GASTADO: $0.00 (presupuesto intacto).
+- Portafolio: 3 tokens BSC (ZTOD, AFEE, ABANANA) + 5 endpoints x402 + perfiles en 2 directorios.
+- Nuevo: análisis competitivo completo con blueprint accionable; monitor v3 trend-driven; E2/E5/E6/E7 en cola de experimentos.
+- Ratio clave aprendido: el líder gana $2.8-4.4 por token lifetime con cadencia masiva; nosotros estamos en el camino correcto con 3 tokens/$0 costo, pero la distribución sigue siendo el cuello de botella (kit listo para humano).
