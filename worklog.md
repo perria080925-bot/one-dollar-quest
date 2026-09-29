@@ -240,3 +240,67 @@ Stage Summary:
 - NUEVOS ACTIVOS: skill odq-paid-data (filesystem Bankr, lista para catálogo GitHub) + agente consumidor funcional (dry-run validado, listo para producción cuando haya fondos) + monitor_v2 vivo de nuevo.
 - Tokens: sigue bloqueado por infra de Kibi (NO por nosotros); 2 cuotas diarias en espera de recuperación.
 - La skill consumidora crea el lado DEMANDA: cualquier agente del mundo puede ahora descubrir y pagarnos.
+
+---
+Task ID: goal-1usd (Sesión 10 - repo GitHub + token trending + agente monetizador + análisis)
+Agent: Super Z (autonomous)
+Task: 7 mandatos: (1) repo GitHub con PAT, (2) token BNB trend-inspired con imagen+tweet, (3) skill+agente Kibi/Bankr linkeados x402, (4) agente monetizador en Kibi, (5) eval ScrapeGraphAI, (6) análisis tokens/agentes top, (7) aplicar autoresearch.
+
+Work Log:
+- [S10-1] REPO GITHUB: creado https://github.com/perria080925-bot/one-dollar-quest (público) con PAT del humano (guardado en secrets 600; recomendación: rotar al terminar). 3 commits: stack completo (x402-services handlers TS, skills odq-paid-data + odq-crypto-data, agent/ consumer, automation/, content/, data/, worklog). Secrets EXCLUIDOS via .gitignore (secrets/, *.log, wallet, node_modules). README profesional con disclosure.
+- [S10-2] TOKEN TREND-INSPIRED: trending BSC scan (GeckoTerminal): Q $40.9M, KII $66.1M, RHEA $8.9M, POP $5.5M, 龙虾 $4.2M, BANANA $1.6M vol24h. Diseñado "Agent Banana" (ABANANA): meme estilo trending + ángulo honesto de agente AI. Imagen AI generada (z-ai image gen, banana-robot logo) subida al repo (raw URL pública). Kibi soporta --image-url y --source (URL de tweet): tweet de CZ (cz_binance/status/2100811057736581158) como source. Launch Base/clanker+basememe FALLÓ (RPC Alchemy de Kibi caído día 3) => monitor_v2 ACTUALIZADO: Agent Banana primero en cola BNB y Base con imagen+tweet, lanza al reset de cuota automático.
+- [S10-3] SKILL+AGENTE LINKED: perfil Kibi actualizado (5 endpoints x402 con URL, repo GitHub, tokens, disclosure). Skill odq-paid-data en filesystem Bankr + en repo público (instalable vía "install skill from GitHub" en cualquier framework). Agente consumidor probado live (dry-run, precios leídos OK).
+- [S10-4] AGENTE MONETIZADOR KIBI: kibi_monetizer.sh (PID nuevo) loop 30min: heartbeat (fees+salud x402 0/5 muertos), trend scan cada 6h (cola: KII,Q,RHEA,POP,龙虾,AKE), content refresh cada 12h (borradores auto ES/EN para revisión humana). Kibi LLM Gateway descubierto (Claude Opus 4.8 en llm.kibi.bot) pero requiere credits ($0 balance) — integración documentada para cuando haya fondos.
+- [S10-5] SCRAPEGRAPHAI: instalado (2.3.0), import OK. Veredicto: requiere LLM backend; conectable a llm.kibi.bot (OpenAI-compatible) cuando haya credits. Mientras tanto APIs públicas JSON (GeckoTerminal/CoinGecko) superiores para trending/precios.
+- [S10-6] ANÁLISIS (analysis/2026-09-28_top-agents-and-trending.md en repo): 124 perfiles Bankr, 93% con revenue>0, top: surplus-intelligence 9.375 WETH/sem (mcap $7M, inferencia), gitlawb 4.542, ratspeak 1.522. 20/20 top tienen TOKEN PROPIO (revenue = fees de trading del token). Correlación log(vol24h)-log(revenue) r=0.55. Mediana ganadores $27/sem. Lección: token + producto real + distribución. Tokens BSC trending: letter-coins + food memes.
+- [S10-7] AUTORESEARCH (karpathy) APLICADO: metodología adaptada a ODQ en analysis/program.md: harness fijo (reglas $0/no-wash/honesty = prepare.py read-only), palancas editables (precios, nombres, cadencia, distribución = train.py), métrica ground-truth (revenue USD real), revenue_experiments.tsv append-only (commit/revenue/status/description), loop 1-cambio-por-experimento, criterio de simplicidad, fallos de infra NO cuentan como resultado. Cola: E1 baseline (en curso) → E2 precio market-signal $0.0005 → E3 contenido 6h → E4 directorios → E5 wallet-watch endpoint.
+
+Stage Summary:
+- INGRESO REAL: $0.00 | GASTADO: $0.00.
+- NUEVOS ACTIVOS: repo GitHub público completo, agente monetizador Kibi autónomo, programa de research de revenue con experiments.tsv, análisis de mercado con blueprint de arquetipos.
+- Agentes vivos: monitor_v2 (launches), kibi_monetizer (distribución+trends), consumer agent (listo para producción).
+- Pendientes humanos: rotar PAT GitHub, PR skill al catálogo, publicar borradores de contenido, aprobar cuotas de créditos si se quiere LLM en el loop.
+
+---
+Task ID: goal-1usd (monitor_v2 auto)
+Agent: monitor_v2.sh
+Task: AUTO-LAUNCH falló: Agent Banana(ABANANA) en base/clanker
+
+Work Log:
+- Detalle en monitor.log
+
+---
+Task ID: goal-1usd (monitor_v2 auto)
+Agent: monitor_v2.sh
+Task: AUTO-LAUNCH falló: Agent Banana(ABANANA) en base/basememe
+
+Work Log:
+- Detalle en monitor.log
+
+---
+Task ID: goal-1usd (monitor_v2 auto)
+Agent: monitor_v2.sh
+Task: AUTO-LAUNCH falló: One Dollar Quest(ODQ) en robinhood/flap
+
+Work Log:
+- Detalle en monitor.log
+
+---
+Task ID: goal-1usd (Sesión 11 - tokens del día 2026-09-29)
+Agent: Super Z (autonomous)
+Task: Humano: "Continúa crea los tokens de hoy".
+
+Work Log:
+- [S11] Bootstrap restaurado (VM reciclada de nuevo): CLIs + auth OK, monitor_v2 (PID 1104) y kibi_monetizer (PID 1107) relanzados. ZTOD vivo ($4.2e-06), 3 endpoints x402 huérfanos siguen 402-live.
+- [S11] CUOTA RENOVADA: bsc 0/1, base 0/1, robinhood 0/1.
+- [S11] TREND SCAN (GeckoTerminal BSC): KII $80M vol (+16.7%) sigue #1, MarsCoin $9.3M (+32.7%) nuevo hot, 中国人能飞 +849%, AKE $4.4M. BANANA salió del top 8 pero el ángulo CZ/banana sigue siendo la conexión Binance más fuerte y los assets ya estaban listos.
+- [S11] **BNB/bfun Agent Banana (ABANANA) => SUCCESS**: 0x90c0b459B9fFD7B64906ba7CD3f0B388a5d39999, job 31865, $0 costo, con imagen AI (raw GitHub) y --source apuntando a tweet de CZ. TOKEN #3 DEL PORTAFOLIO. Verificado on-chain (price null = recién creado).
+- [S11] Base/clanker ABANANA => FAIL (403 Alchemy RPC de Kibi, día 4); Base/basememe => FAIL ("Failed to send transaction"). Robinhood/flap ODQ => FAIL (deployer 0.0000676 ETH vs 0.000238 necesario); Robinhood/doppler => FAIL (sin balance). Cuota Base/RH NO consumida; monitor reintenta cada 2h.
+- [S11] FEES: 3 tokens BSC, 0 BNB earned (sin volumen orgánico aún).
+- [S11] Casa: TOKEN_ABANANA_BSC agregado a secrets; kit de contenido actualizado con ABANANA (línea oficial, hilo ES/EN, draft auto); Bankr profile update #5 publicada (ABANANA live).
+
+Stage Summary:
+- PORTAFOLIO: 3 tokens vivos (ZTOD, AFEE, ABANANA) en BNB chain, todos $0 costo, fees 100% al proyecto.
+- BNB sigue siendo la única cadena funcional de Kibi (4º día consecutivo: Base por RPC 403, Robinhood por deployer sin gas — externo a nosotros).
+- INGRESO REAL: $0.00 | GASTADO: $0.00 (presupuesto intacto).
+- Pendientes humanos: post X (kit listo con los 3 tokens), rotar PAT, financiar $5 si se quiere desbloquear más vías.
