@@ -4,3 +4,5 @@ E2-price-cut	2026-09-29	planned	market-signal 0.001->0.0005 after 0 calls in 3d;
 E5-wallet-watch	2026-09-29	planned	KOL wallet tracking endpoint 0.002; winners copy winners
 E6-auto-image	2026-09-29	planned	pipeline name->AI img->raw URL->launch args
 E7-cjk-symbol	2026-09-29	planned	test CJK symbol acceptance on kibi (chinese meta = all top earners)
+E2-price-cut	2026-09-30	executed	market-signal 0.001->0.0005 redeployed; measure calls over 7d
+E6-auto-image	2026-09-30	partial	manual pipeline executed for ASOON (z-ai img->repo raw->launch); automation pending
