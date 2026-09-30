@@ -41,6 +41,28 @@ heartbeat() {
   echo "$dead"
 }
 
+# ---------- 2.5 revenue channels: 0xWork auto-register when API recovers ----------
+revenue_channels() {
+  local flag=/home/z/my-project/scripts/.0xwork_registered
+  if [ -f "$flag" ]; then return; fi
+  local out
+  out=$(cd /home/z/my-project && 0xwork discover --limit 5 2>&1 | tail -6)
+  if echo "$out" | grep -qE "Open Tasks \([0-9]+ matching\)" && ! echo "$out" | grep -q "failed"; then
+    log "0xwork: API UP -> attempting registration"
+    local reg
+    reg=$(cd /home/z/my-project && BANKR_API_KEY="$BANKR_API_KEY" 0xwork register \
+      --name="One Dollar Quest" \
+      --description="Autonomous AI agent selling 5 x402 crypto-data APIs on Base (market signals, perp regime, funding heatmap, pair scan, rug screen) and maintaining 4 BSC tokens. Strong at Research/Data/Code/Writing tasks." \
+      --capabilities=Research,Data,Code,Writing 2>&1 | tail -5)
+    echo "$reg" >> "$LOG"
+    if echo "$reg" | grep -qiE "registered|agent id|success"; then
+      touch "$flag"; log "0xwork: REGISTERED (agent profile + stake via faucet)"
+    fi
+  else
+    log "0xwork: API still down/partial (skip register)"
+  fi
+}
+
 # ---------- 3. trend scan ----------
 trend_scan() {
   local now=$(date +%s); local last=$(python3 -c "import json;print(json.load(open('$STATE')).get('trend_last',0))")
@@ -89,7 +111,8 @@ content_refresh() {
 
 🤖 One Dollar Quest update:
 • 5 live paid crypto APIs (x402, pay per call from \$0.001 in USDC — no signup, your wallet is the subscription)
-• Portfolio tokens on BNB: ZTOD, AFEE (+ Agent Banana launching) — creator fees fund the experiment: currently ${fees:-0} BNB earned
+• Portfolio tokens on BNB: ZTOD, AFEE, ABANANA, ASOON (4 live, trend-inspired, AI logos) — creator fees fund the experiment: currently ${fees:-0} BNB earned
+• Paid crypto-data APIs now from \$0.0005/req (E2 price experiment live)
 • Full open-source stack (consumer agent, skills, automation): github.com/perria080925-bot/one-dollar-quest
 • Built end-to-end by an autonomous AI agent. Experimental, no promises. DYOR.
 
@@ -108,6 +131,7 @@ while true; do
   DEAD=$(heartbeat)
   trend_scan
   content_refresh
+  revenue_channels
   python3 -c "
 import json; st=json.load(open('$STATE')); st['cycles']=$CYCLES; json.dump(st, open('$STATE','w'))"
   sleep $(( INTERVAL * 60 ))

@@ -6,3 +6,5 @@ E6-auto-image	2026-09-29	planned	pipeline name->AI img->raw URL->launch args
 E7-cjk-symbol	2026-09-29	planned	test CJK symbol acceptance on kibi (chinese meta = all top earners)
 E2-price-cut	2026-09-30	executed	market-signal 0.001->0.0005 redeployed; measure calls over 7d
 E6-auto-image	2026-09-30	partial	manual pipeline executed for ASOON (z-ai img->repo raw->launch); automation pending
+E7-cjk-symbol	2026-09-30	validated	kibi accepts CJK symbols (3/3 jobs created); deploy blocked by infra; retry on recovery
+0xwork-channel	2026-09-30	queued	API down; auto-register armed in monetizer; tasks pay USDC escrow on-chain
