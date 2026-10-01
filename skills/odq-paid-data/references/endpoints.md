@@ -1,72 +1,96 @@
-# Endpoint Reference — ODQ x402 catalog
+# Endpoint Reference — ODQ Crypto Data
 
-Base URL: `https://x402.bankr.bot/0xf436ca41bd0a236338bef57adeb4976677513010`
+BASE = `https://x402.bankr.bot/0xf436ca41bd0a236338bef57adeb4976677513010`
 
-All endpoints: `GET`, payment in USDC on Base (0x8335...2913), x402 v2, facilitator
-`https://api.bankr.bot/facilitator`. Prices below are the configured `price`; verify the
-live `amount` from each 402 response before paying.
+All services: network `base`, currency `USDC`, paywall per x402 v2.
+Unpaid request → HTTP 402 with payment requirements JSON (free to receive).
 
-## 1. market-signal — $0.001
+---
 
-`GET /market-signal?coin=bitcoin&vs=usd`
+## 1. market-signal — $0.001 USDC
 
-- `coin`: any CoinGecko coin id (e.g. `bitcoin`, `ethereum`, `solana`)
-- `vs`: quote currency, default `usd`
+`GET {BASE}/market-signal?coin=bitcoin&vs=usd`
 
-Returns: price, 24h/7d/30d % change, market cap, total volume, SMA7/SMA25 with trend
-(`up`/`down`/`flat`), RSI-14 (Wilder smoothing, with `overbought`/`oversold` zones),
-annualized volatility, and a disclaimer.
+- `coin`: CoinGecko id (required). Examples: `bitcoin`, `ethereum`, `aerodrome-protocol`.
+- `vs`: quote currency, default `usd`.
 
-Example decision value: timing checks before portfolio actions; cheap enough to poll
-every few hours.
+Returns: price, market cap, 24h/7d/30d change, SMA7 & SMA25 with trend
+(UP/DOWN), RSI-14 (Wilder), annualized volatility (from 60d daily data),
+plus raw inputs and disclaimer.
 
-## 2. pair-scan — $0.005
+Example decision mapping:
+- RSI > 70 → overbought territory (data point, not advice).
+- SMA7 > SMA25 → short-term momentum above medium trend.
 
-`GET /pair-scan?token=<0xADDRESS>`
+## 2. crypto-sentinel — $0.003 USDC
 
-- `token`: any EVM token address (pairs are looked up on DexScreener)
+`GET {BASE}/crypto-sentinel` (no params)
 
-Returns: number of pairs, aggregate liquidity, 24h/6h/1h volume, FDV, churn ratio, top
-pairs with DEX names, and a liquidity-health assessment.
+One call returns for BTC/ETH/SOL: spot price, 24h change, current funding
+APR (Binance USD-M), volatility regime (calm/normal/wild), and long/short
+crowding regime based on funding sign and magnitude. Sources: Binance fapi,
+fallback CoinGecko. ~100ms, deterministic.
 
-Example decision value: checking whether a token you were asked about has real,
-concentrated-enough liquidity before discussing tradability.
+## 3. funding-heatmap — $0.004 USDC
 
-## 3. token-safety — $0.01
+`GET {BASE}/funding-heatmap` (no params)
 
-`GET /token-safety?token=<0xADDRESS>&chain=base`
+Annualized funding APR for 15 Binance USD-M perps (BTC, ETH, SOL, XRP, DOGE,
+ADA, AVAX, LINK, SUI, TON, BNB, LTC, PEPE, WIF, ARB), ranked by |APR|, with
+`crowded_long` / `crowded_short` flags on extremes. Use to see which side of
+which market is paying to stay in.
 
-- `token`: EVM token address
-- `chain`: optional (`base` default; supports chains covered by public RPCs)
+## 4. pair-scan — $0.005 USDC
 
-Returns: heuristic rug-screen — liquidity concentration, sell-pressure flag,
-buy/sell tax hints via bytecode markers, holder-count signal when public, a 0–100 risk
-score bucket (`low`/`normal_range`/`elevated`/`high_risk`), each flag's rationale, and
-the methodology block. It is a screen, not an audit.
+`GET {BASE}/pair-scan?token=0xCONTRACT&chain=base`
 
-Example decision value: pre-screening any token a user mentions before deeper analysis.
+- `token`: EVM contract address (required).
+- `chain`: one of `base|arbitrum|ethereum|bsc|solana` (default `base`).
 
-## 4. funding-heatmap — $0.004
+Returns: aggregated liquidity across all DEX pairs, 24h volume, volume/liquidity
+churn, best pair (DEX, price, FDV, 24h vol, txns buy/sell), up to 6 secondary
+pairs. Data: DexScreener.
 
-`GET /funding-heatmap?symbol=BTC`
+## 5. token-safety — $0.01 USDC
 
-- `symbol`: perp base symbol (e.g. `BTC`, `ETH`)
+`GET {BASE}/token-safety?token=0xCONTRACT&chain=base`
 
-Returns: funding-rate context snapshot with sign and magnitude framing, plus disclaimer.
+Transparent rule-based rug screen. Score 0-100 (higher = safer), level
+`normal_range|elevated_risk|high_risk`, with auditable flags such as:
 
-## 5. crypto-sentinel — $0.003
+- PAIR_YOUNGER_THAN_24H (+25)
+- LIQUIDITY_BELOW_10K (+25)
+- EXTREME_VOLUME_CHURN_GT_5X (+15)
+- SELL_PRESSURE_GT_80PCT (+10)
+- VOLATILITY_EXTREME_24H (+10)
 
-`GET /crypto-sentinel?symbol=BTC`
+Every response echoes `inputs_used`, `methodology` and a disclaimer that this
+is NOT a security audit. Interpretation guide:
 
-- `symbol`: symbol to alert on
+- 80-100: no red flags in the heuristics used.
+- 40-79: elevated risk — read the flags before acting.
+- 0-39: high risk — multiple red flags; treat as hazardous.
 
-Returns: risk-alert snapshot combining public market fields with rule-based warnings.
+## Cost discipline
 
-## Error behavior
+| Task | Calls | Cost |
+|------|-------|------|
+| One coin signal | 1 | $0.001 |
+| Full perp snapshot | 1 | $0.003 |
+| Screen one token | 2 | $0.015 (pair-scan + token-safety) |
+| Screen a 50-token watchlist | 100 | $1.50 |
 
-| Response | Meaning | What to do |
-|---|---|---|
-| `200` | Paid request accepted | Parse JSON body |
-| `402` | Paywall (expected on first unpaid call) | Read `accepts[0]`, decide, pay and retry |
-| `400` | Bad params (e.g. unknown coin id) | Fix params; do NOT retry paid without fixing |
-| `429/5xx` | Upstream rate limit or outage | Back off; the x402 router only settles on success, so no funds moved |
+Always confirm batch costs with the user before running multi-token scans.
+
+## wallet-watch ($0.0002/req)
+
+```
+GET {BASE}/wallet-watch?address=0x{40hex}&chain=eth|base|bsc&txs=false (optional)
+```
+
+Returns: live native balance (wei + whole units) from a public RPC node, Blockscout wallet flags (ENS domain, has_tokens, has_token_transfers, native exchange rate), and the 5 most recent transactions touching the address (hash, from, to, value, status, timestamp, method). `txs=false` skips the transactions fetch.
+
+Example:
+```bash
+curl -s "$BASE/wallet-watch?address=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&chain=eth"
+```
