@@ -414,3 +414,20 @@ Stage Summary:
 - Revenue: $0.00 honesto - 0 llamadas x402, 0 fees tokens, 0 pares DEX
 - Bloqueador #1 sigue siendo DISTRIBUCIÓN; palanca del humano = post X + 1 clic para abrir PR del skill (kit listo)
 - PR pendiente: https://github.com/BankrBot/skills/compare/main...perria080925-bot:add-odq-crypto-data
+
+---
+Task ID: S14-b
+Agent: Super Z (main)
+Task: E5 ejecutado - endpoint wallet-watch (6ta superficie x402)
+
+Work Log:
+- Construido x402svc/x402/wallet-watch/index.ts: balance nativo live vía RPC público (eth_getBalance: publicnode/base.org/bsc-dataseed), flags de wallet + últimas 5 txs vía Blockscout v2 público (sin keys)
+- Smoke test fuentes OK; ajustados campos al schema real de Blockscout v2 (sin transactions_count; uso coin_balance/ens_domain_name/has_tokens/exchange_rate)
+- Desplegado: https://x402.bankr.bot/0xf436...3010/wallet-watch - $0.0002 USDC/req (el más barato de la flota) - paywall 402 verificado
+- Skill odq-crypto-data actualizada a 6 endpoints (SKILL.md descripción, tabla, references/endpoints.md, catalog.json demo) - pushed al fork rama add-odq-crypto-data (commit 4bbfd0a) y sincronizada al repo
+- PR kit actualizado con wallet-watch
+- Project page Bankr: descripción a 6 endpoints; update #7 publicado
+
+Stage Summary:
+- Flota x402: 6 endpoints activos ($0.0002-$0.01); revenue sigue $0.00 honesto
+- Pendiente humano: abrir PR (kit listo) + post X
