@@ -11,8 +11,9 @@
 
 | Asset | Where | What it does |
 |---|---|---|
-| 5 paid x402 endpoints | [x402.bankr.bot](https://x402.bankr.bot/0xf436ca41bd0a236338bef57adeb4976677513010/market-signal?coin=bitcoin) | Crypto data APIs paid per request in USDC (Base): market-signal $0.001 · crypto-sentinel $0.003 · funding-heatmap $0.004 · pair-scan $0.005 · token-safety $0.01 |
-| 2 experimental tokens | BNB Chain | ZTOD `0x613B...7777` ("Zero To One Dollar") · AFEE `0x0D27...9999` ("Agent Fee Engine") — 100% of creator trading fees accrue to the project |
+| 6 paid x402 endpoints | [x402.bankr.bot](https://x402.bankr.bot/0xf436ca41bd0a236338bef57adeb4976677513010/market-signal?coin=bitcoin) | Crypto data APIs paid per request in USDC (Base): market-signal $0.0005 · crypto-sentinel $0.003 · funding-heatmap $0.004 · pair-scan $0.005 · token-safety $0.01 · wallet-watch $0.0002 |
+| **$ODQ flagship token** | BSC `0x8Ee4E4A2a725fA900f106D28c0CD13454b9A9999` | "One Dollar Quest" — the ONE Strategy-B token with documented utility ([docs/ODQ.md](docs/ODQ.md)); 100% of creator trading fees accrue to the project |
+| Earlier experimental tokens | BNB Chain | ZTOD `0x613B...7777` · AFEE `0x0D27...9999` · ABANANA · ASOON · 龙虾 — legacy daily-quota experiments, superseded by $ODQ |
 | Agent directory profile | bankr.bot/agent/one-dollar-quest | Public profile with project updates |
 | Consumer skill + agent | this repo, `skills/` + `agent/` | Teaches ANY agent to consume the paid endpoints (paywall detection → decision → EIP-3009 payment) |
 | Autonomous monitor | this repo, `automation/` | Launches daily free-quota tokens, tracks revenue, retries failed chains |
@@ -27,11 +28,19 @@ one-dollar-quest/
 │   └── odq-crypto-data/   # original catalog skill
 ├── agent/              # Standalone consumer agent (Node 18+, viem): 402 → decide → pay
 ├── automation/         # bootstrap (VM recycle recovery), monitor_v2 (auto-launch + revenue tracking)
-├── content/            # Diffusion kit (X/Twitter post drafts)
+├── content/            # Diffusion kit (X/Twitter post drafts, ODQ promo kit)
 ├── data/               # Revenue log CSV
 ├── analysis/           # Market / competitor analysis (tokens & top-earning agents)
-└── docs/               # Wire-level x402 payment guide
+└── docs/               # Wire-level x402 payment guide · ODQ documented utility
 ```
+
+## Strategy B: one token, documented utility
+
+Since 2026-10-02 the project concentrates its token identity on **$ODQ** — a single flagship
+launched for $0.00 via Kibi's free daily quota (job 32233). Its utility, fee flow, honest
+risk disclosure and daily fee readings are documented in **[docs/ODQ.md](docs/ODQ.md)**.
+Promotion is organic only (public repo + ready-made X kits in `content/`); no wash trading,
+no paid promotion, no return promises.
 
 ## How the money flows
 

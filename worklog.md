@@ -431,3 +431,90 @@ Work Log:
 Stage Summary:
 - Flota x402: 6 endpoints activos ($0.0002-$0.01); revenue sigue $0.00 honesto
 - Pendiente humano: abrir PR (kit listo) + post X
+
+---
+Task ID: goal-1usd (monitor_v2 auto)
+Agent: monitor_v2.sh
+Task: AUTO-LAUNCH falló: Agent Ct(ACT) en base/clanker
+
+Work Log:
+- Detalle en monitor.log
+
+---
+Task ID: goal-1usd (monitor_v2 auto)
+Agent: monitor_v2.sh
+Task: AUTO-LAUNCH falló: Agent Ct(ACT) en base/basememe
+
+Work Log:
+- Detalle en monitor.log
+
+---
+Task ID: goal-1usd (monitor_v2 auto)
+Agent: monitor_v2.sh
+Task: AUTO-LAUNCH falló: One Dollar Quest(ODQ) en robinhood/flap
+
+Work Log:
+- Detalle en monitor.log
+
+---
+Task ID: S15 (Estrategia A - Día 1)
+Agent: Super Z (main)
+Task: Mandato nuevo del humano: estrategia de ingresos gasto cero en Bankr/Kibi con reporte diario de cifras verificadas. Configuración confirmada vía AskUserQuestion: nicho IA+agentes, sin cuenta X propia, disponibilidad <15 min/día, Estrategia A (launches para creadores con fee split), propuestas ES+EN.
+
+Work Log:
+- [S15-1] Bootstrap VM + lectura completa de las 5 fuentes oficiales del scope (docs.bankr.bot/llms-full.txt 792KB, guía zero-to-earning, SKILL.md Bankr, docs kibi.bot/agent, SKILL.md Kibi). Cache en scripts/docs_cache/.
+- [S15-2] VERIFICADO gratis: Kibi 1 launch gratis/chain/día (CLI `kibi quota`: BNB 1, Base 1, RH 1); Bankr 3 intentos launch/24h, gas patrocinado en Base. VERIFICADO pagado (NO usar): Bankr Club $20/mo (Agent API prompts), Kibi Credits (LLM), gas RH/Arbitrum en Bankr.
+- [S15-3] FLAGS ESTRATEGIA A VERIFICADOS en CLI oficial: `kibi token create --for <handle> --fee "handle:70,..."` (--fee requiere --for). Kibi SKILL.md: Flap BSC tax 3%, pool creadores 90%, máx 8 receptores, sum(percent)≤80, AUTO-DISTRIBUYE fees (sin claim, sin gas) — ruta más limpia para Nivel 1. Bankr: fee redirect a 1 beneficiario (95% de 0.7% pool fee).
+- [S15-4] BASELINE DÍA 1 (fuente CLI): kibi fees = 0 BNB / 0 ETH / 0 WETH claimable; bankr fees = TACO Doppler 0 WETH/0 TACO claimable, 0 claims 30d. Gasto total $0.00.
+- [S15-5] PROSPECTING: 12 búsquedas web (6 descubrimiento + 6 validación) guardadas en download/estrategia_A/searches/. Lista de 10 prospectos con ≥2 fuentes cada uno en download/estrategia_A/prospectos_dia1.md (nicho IA+agentes: steipete/OpenClaw, elizaOS_news, visionario_btc ES, AIHighlight, PinkBrains_io, DonJohnsonSays, 0FJAKE, scupytrooples, cryptojobslist, iam_kiddee).
+- [S15-6] HALLAZGO SEGURIDAD: cuenta X @bankrbot hackeada en julio 2026, scammers lanzaron tokens no solicitados en nombre de terceros → el pitch anti-scam (consentimiento escrito primero + worklog público) es el diferenciador central de la oferta.
+- [S15-7] Borradores de propuestas ES+EN creados en download/estrategia_A/propuestas_borrador.md (oferta estándar 70/30 + variante anti-scam). NO enviados: pendientes de aprobación del humano.
+
+BLOQUEO REPORTADO: el humano confirmó que NO tiene cuenta de X. Sin cuenta no se pueden enviar DMs ni replies. Opciones: (a) humano crea cuenta X dedicada al experimento y provee credenciales por variable de entorno, (b) humano envía manualmente las propuestas aprobadas copiando de propuestas_borrador.md, (c) autorizar canal alternativo (GitHub/Discord/email de los creadores). Decisión pendiente del humano.
+
+Stage Summary:
+- Día 1 Estrategia A COMPLETADO (research + baseline + 10 prospectos validados + propuestas listas).
+- Fees acumulados: $0.00 | Fees cobrados: $0.00 | Gasto: $0.00 (fuentes: kibi fees, bankr fees CLI).
+- Pendiente humano: (1) decidir canal de contacto X (bloqueo), (2) aprobar propuestas antes de enviar, (3) responder "continúa"/"cambia a B"/"detén" mañana.
+
+---
+Task ID: S16 (Día 1 ejecución: A-kit + B-launch)
+Agent: Super Z (main)
+Task: Humano: "Continúa y después continúa con la estrategia B". Ejecutar A (outreach preparado) + B (token único con utilidad documentada).
+
+Work Log:
+- [S16-0] VM reciclada (2ª vez hoy): CLIs kibi/bankr desaparecidos => bootstrap restauró auth y monitores (monitor_v2 PID 1452, monetizer PID 1454).
+- [S16-1] TRACK A: kit de envío X creado (download/estrategia_A/kit_envio_x.md): 10 DMs personalizados listos para copiar/pegar (ES para @visionario_btc, EN resto, variante anti-scam para @scupytrooples) + protocolo de seguimiento (máx 2 insistencias) + tabla de registro de envíos. BLOQUEO MANTENIDO: humano sin cuenta X => no hay envío autónomo posible; el humano debe enviar manualmente o crear cuenta.
+- [S16-2] TRACK B LOGO: logo AI de ODQ generado (assets/odq_logo.png, z-ai image 1024x1024). Hosting FALLÓ en todos los candidatos gratuitos sin key: catbox ("Invalid uploader" anti-bot), 0x0.st (vacío), envs.sh (dominio muerto), x0.at (IP baneada), telegra.ph (error), pixeldrain (ahora exige auth), bankr files (key read-only). DECISIÓN: launch SIN imagen custom; utilidad documentada en descripción.
+- [S16-3] TRACK B LAUNCH: intento 1 flap BNB => FAIL gas deployer Kibi (0.000268 vs 0.000363 BNB, error -32000; cuota NO consumida, regla gasto cero respetada). Intento 2 bfun BNB => **SUCCESS**: **ODQ "One Dollar Quest" 0x8Ee4E4A2a725fA900f106D28c0CD13454b9A9999** (job 32233, completado 04:58:45Z). Costo $0 (cuota gratis BNB 1/1). Descripción honesta incluida (utilidad: fees financian al agente 24/7, experimento público auditable, sin promesas, el token puede perder valor).
+- [S16-4] VERIFICACIÓN: `kibi fees --chain bnb --platform bfun --token 0x8Ee4...` => "One Dollar Quest (ODQ), bfun·BSC, Earned 0 BNB" (tracking activo). Cuota restante hoy: BNB 0, Base 1, RH 1 (no se usan sin consentimiento escrito de creadores).
+- [S16-5] AUTO-LAUNCHES DESCARTADOS: verificado que monitor_v2.sh ya tiene MANDATE v2 (2026-10-01): LAUNCH_ENABLED=0, launches solo con aceptación escrita de creador (Estrategia A). Monitor queda solo-medición. Cumple el scope-out "no lanzar tokens desechables".
+- [S16-6] PROMO ORGÁNICA: perfil Kibi actualizado con ODQ (kibi profile update OK, pendiente review admin desde Sep 27). bankr project add-update => **BLOQUEADO 403: "This API key has read-only access"** (el error sugiere actualizar permisos en bankr.bot/api-keys). La key read-only TAMBIÉN bloquea claims de fees del lado Bankr y files upload.
+- [S16-7] Medición final: kibi fees 0 BNB/0 ETH/0 WETH; bankr fees TACO 0 WETH claimable (0 claims 30d); balances agente 0 en todas las chains. Gasto total $0.00.
+
+BLOQUEOS NUEVOS: (1) key Bankr read-only => acciones del humano: 1 min en bankr.bot/api-keys subiendo permisos de la key bk_usr_Z2nDa... a read-write (o proveer otra key por env); desbloquearía project updates, files upload y claims Bankr. (2) sin cuenta X => envío de DMs manual por el humano (kit listo).
+
+Stage Summary:
+- **ODQ DESPLEGADO: primer token de la Estrategia B (UN token, utilidad documentada, $0 costo)**. Tracking de fees activo.
+- Track A lista para despegar: kit de 10 DMs esperando solo el canal (humano).
+- INGRESO REAL: $0.00 | GASTO: $0.00 (fuentes: kibi fees, bankr fees, balances CLI 2026-10-02).
+- Pendiente humano: (a) enviar kit X o crear cuenta, (b) permisos read-write en key Bankr, (c) decidir mañana: continúa / cambia a B / detén.
+
+---
+Task ID: S17 (Día 2 - Refuerzo Estrategia B)
+Agent: Super Z (main)
+Task: Humano: "Continua y refuerza B". Reforzar la Estrategia B: medición ODQ, utilidad documentada, promoción orgánica.
+
+Work Log:
+- [S17-1] Chequeo diario (fuente CLI): kibi fees = 0 BNB (flap/fourmeme/bfun); bankr fees = TACO 0 WETH claimable (0 claims 30d); cuota BNB usada (ODQ), Base 1 y RH 1 intactas (no se usan sin consentimiento escrito). Gasto $0.00.
+- [S17-2] ODQ on-chain verificado vía RPC público BSC (contrato proxy válido, 45 bytes). Dexscreener API pública: 0 pares aún (bfun·BSC no indexado) — visibilidad orgánica externa pendiente de indexación.
+- [S17-3] UTILIDAD DOCUMENTADA (requisito central de B): creado docs/ODQ.md en el repo público — identidad verificable (contrato, job 32233, costo $0), utilidad U1 flujo de fees→agente / U2 recibo on-chain auditable / U3 rail comunitario, disclosure honesto ("what ODQ is NOT"), checklist de verificación para terceros, status log diario, TL;DR en ES.
+- [S17-4] PROMO ORGÁNICA: creado content/kit_promo_odq.md — 2 tweets cortos (EN+ES) + hilo EN de 4 tweets, todos sin promesas de retorno y con disclosure; sugerencia de publicación ≤15 min/día. Copia en download/estrategia_B/ para el humano.
+- [S17-5] README del repo actualizado: ODQ como flagship (Strategy B section), endpoints 5→6 (wallet-watch $0.0002, market-signal corregido a $0.0005), tokens previos marcados legacy/superseded.
+- [S17-6] bankr project add-update REINTENTADO => 403 read-only PERSISTENTE (2º día). Desbloqueo humano: 1 min en bankr.bot/api-keys subiendo la key bk_usr_Z2nDa... a read-write. Bloquea: project updates, files upload, claims Bankr.
+- [S17-7] worklog público del repo sincronizado con el local (fuente única de verdad) + push a GitHub.
+
+Stage Summary:
+- Estrategia B REFORZADA: utilidad documentada (docs/ODQ.md) + kit promo (ES/EN) + README flagship + push público.
+- Fees acumulados: $0.00 | Fees cobrados: $0.00 | Gasto: $0.00 (fuentes: kibi fees, bankr fees CLI 2026-10-03).
+- Pendiente humano: (a) permisos read-write en key Bankr, (b) publicar kit X de ODQ (o crear cuenta), (c) decidir: continúa / ajusta / detén.
