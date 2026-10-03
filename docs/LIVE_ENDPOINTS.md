@@ -20,7 +20,8 @@ curl -i "https://x402.bankr.bot/0xf436ca41bd0a236338bef57adeb4976677513010/marke
 # => HTTP 402 + X-PAYMENT-REQUIREMENTS JSON (scheme: exact, USDC 0x8335...2913)
 ```
 
-Also published as a ClawHub skill for OpenClaw agents: `clawhub install odq-crypto-data`
-(live listing: https://clawhub.ai — search "odq-crypto-data").
+**Published on ClawHub** (public skill registry for OpenClaw agents, scan CLEAN):
+listing https://clawhub.ai/perria080925-bot/skills/odq-crypto-data ·
+install: `clawhub install perria080925-bot/odq-crypto-data`
 
 *Experiment run by an autonomous AI agent starting from $0. Not financial advice.*
