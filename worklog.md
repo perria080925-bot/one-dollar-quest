@@ -518,3 +518,38 @@ Stage Summary:
 - Estrategia B REFORZADA: utilidad documentada (docs/ODQ.md) + kit promo (ES/EN) + README flagship + push público.
 - Fees acumulados: $0.00 | Fees cobrados: $0.00 | Gasto: $0.00 (fuentes: kibi fees, bankr fees CLI 2026-10-03).
 - Pendiente humano: (a) permisos read-write en key Bankr, (b) publicar kit X de ODQ (o crear cuenta), (c) decidir: continúa / ajusta / detén.
+
+---
+Task ID: S18 (Día 2b - "Continúa hasta que ganemos algo")
+Agent: Super Z (main)
+Task: Presionar todos los canales de ingreso gratuitos y cazar vías nuevas hasta la primera ganancia real.
+
+Work Log:
+- [S18-1] Chequeo diario: kibi fees 0 BNB (flap/fourmeme/bfun auto-distribuido), RH/Base 0 ETH; bankr fees TACO 0 WETH claimable; balances on-chain 0.0 ETH (RPC público base+eth). Gasto $0.00. Cuota BNB aún marcada usada (resetea ~00:00 UTC), Base/RH libres.
+- [S18-2] CAZA DE CANALES: 0xWork API SIGUE MUERTA (timeout 15s, HTTP 000; root 307). Docs Bankr: referral code NO monetiza (solo identificación). Kibi: sin programa de rewards. bankr agent/skills/llm requieren Club o créditos (PROHIBIDO). Conclusión: sin vías de ingreso nuevas activas; distribución sigue siendo el único multiplicador.
+- [S18-3] DISTRIBUCIÓN EJECUTADA (GitHub, $0): 10 topics añadidos al repo (x402, ai-agents, pay-per-call...) + Release pública "odq-launch" (github.com/perria080925-bot/one-dollar-quest/releases/tag/odq-launch) + docs/LIVE_ENDPOINTS.md (tabla indexable de 6 endpoints con URLs 402 verificadas) pushed (52aef42). Gist público BLOQUEADO (PAT sin permiso gists) -> sustituido por doc en repo.
+- [S18-4] CANAL NUEVO IDENTIFICADO: ClawHub (registro público de skills OpenClaw, búsqueda vectorial, miles de agentes). CLI clawhub v0.23.3 instalado; device flow abierto: user_code SDTN-98TG mostrado al humano (expira 15 min). Pendiente: 1 aprobación humana en clawhub.ai/cli/device -> publicar skills/odq-crypto-data (SKILL.md formato openclaw, sin secretos, 6 endpoints + precios).
+- [S18-5] ODQ MEDIDO (kibi token info): price $0.000003059, mcap $3,118.96, vol 24h null (0 trades => 0 fees). URL pública kibi.bot/tokens/0x8Ee4...9999?chain=bnb. Dexscreener: sigue sin indexar bfun·BSC.
+- [S18-6] Perfil Kibi: pending_review desde Sep 27 (día 6 de espera admin). Earnings $0.00 (fuente kibi profile).
+
+Stage Summary:
+- INGRESO REAL: $0.00 | GASTO: $0.00 (fuentes: kibi fees/profile, bankr fees, RPC público 2026-10-03).
+- Distribución ejecutada en 4 superficies nuevas (topics, release, LIVE_ENDPOINTS, ClawHub en cola).
+- Único pendiente con humano: aprobar device flow ClawHub (1 min) -> publico la skill al instante.
+
+---
+Task ID: S19 (Día 2c - Skill publicada en ClawHub)
+Agent: Super Z (main)
+Task: Completar publicación de odq-crypto-data en ClawHub tras autorización del humano (device flow).
+
+Work Log:
+- [S19-1] DIAGNÓSTICO: el sandbox mata procesos background entre tool-calls (3 device flows del CLI perdidos). SOLUCIÓN: ingeniería inversa de dist/deviceAuth.js (RFC 8628) -> scripts/clawhub_devcode.sh + clawhub_devpoll.sh con curl puro (device_code persistido en disco, canje sin procesos residentes).
+- [S19-2] Humano autorizó user_code KR5N-H2WK -> token canjeado (47 bytes, SUCCESS), clawhub login --token OK (@perria080925-bot), token persistido en secrets/keys.env (CLAWHUB_TOKEN) para sobrevivir recycles.
+- [S19-3] PUBLICADA: odq-crypto-data@1.0.0 en ClawHub (skill publish, changelog x402). Security scan: SUCCEEDED, static-analysis CLEAN (engine v2.4.26, 0 findings). Moderación: CLEAN (scanner.llm.clean).
+- [S19-4] LISTING PÚBLICO VERIFICADO: https://clawhub.ai/perria080925-bot/skills/odq-crypto-data · install: clawhub install perria080925-bot/odq-crypto-data · visible en /api/v1/search?q=odq (downloads 0 al inicio). Licencia MIT-0.
+- [S19-5] Repo actualizado (docs/LIVE_ENDPOINTS.md con link canónico ClawHub) y pushed (3f1dba2). Scan zip archivado en my-project/clawhub-scan-result/.
+
+Stage Summary:
+- PRIMER CANAL DE DISTRIBUCIÓN CON TRÁFICO REAL DE AGENTES: la skill que enseña a PAGAR nuestros 6 endpoints x402 queda listada en el registro público de OpenClaw con búsqueda vectorial.
+- Revenue sigue $0.00 honesto | Gasto $0.00. Métrica a vigilar: installs de la skill (rolling60DayInstalls) y primeros 402->200 pagos en los endpoints.
+- Pendiente humano: nada técnico; opcional compartir el link del listing donde tenga audiencia.
