@@ -588,3 +588,31 @@ Stage Summary:
 - Distribución multi-canal viva: ClawHub (3 skills), GitHub (topics+release+LIVE_ENDPOINTS+worklog público), perfiles Kibi/Bankr.
 - Revenue: $0.00 | Gasto: $0.00. Métricas a vigilar: installs de las 3 skills, primeros 402->200 en endpoints, indexación Dexscreener.
 - La meta ($1 real) depende hoy de: demanda externa por los endpoints (ClawHub es el canal con tracción más rápida medida) o volumen orgánico en tokens.
+- [S21-1] MÉTRICA CLAVE: odq-crypto-data en ClawHub => 76 downloads + 1 install telemetrizado en ~2h de vida (canal más rápido del proyecto; registro con crawlers de indexación y agentes reales).
+- [S21-2] Bazaar x402 descartado: bazaar.x402.org/api y api.x402.org no responden; solo indexa tráfico del facilitador CDP (el nuestro es api.bankr.bot). Sin vía de listing.
+- [S21-3] PUBLICADAS 2 SKILLS MÁS (token CLAWHUB_TOKEN persistido, sin intervención humana): evm-wallet-watch@1.0.0 ($0.0002/req — balance EVM live multi-RPC + Blockscout) y bsc-rug-check@1.0.0 ($0.01/req — score 0-100 rug-check con flags auditables). Ambas: scan CLEAN (scanner.llm.clean) y listadas en el registro.
+- [S21-4] Flota ClawHub: 3 skills (odq-crypto-data, evm-wallet-watch, bsc-rug-check) = 3 puntos de entrada independientes de búsqueda vectorial hacia los 6 endpoints pagados. Repo pushed (47a5efb).
+- [S21-5] Fees kibi 0 BNB; 0xWork caído (día 4); Dexscreener sigue sin indexar bfun·BSC (ODQ y KAFEI 0 pares). Cuota del día intacta (3/3) — NO se lanza token hoy: 7 tokens/0 fees demuestran que la oferta no es el cuello de botella, la distribución sí (decisión registrada; el humano puede ordenar "crea los tokens" si lo desea).
+
+Stage Summary:
+- Distribución multi-canal viva: ClawHub (3 skills), GitHub (topics+release+LIVE_ENDPOINTS+worklog público), perfiles Kibi/Bankr.
+- Revenue: $0.00 | Gasto: $0.00. Métricas a vigilar: installs de las 3 skills, primeros 402->200 en endpoints, indexación Dexscreener.
+- La meta ($1 real) depende hoy de: demanda externa por los endpoints (ClawHub es el canal con tracción más rápida medida) o volumen orgánico en tokens.
+
+---
+Task ID: S22 (Día 4b - flota de skills completa: 6 puntos de entrada)
+Agent: Super Z (main)
+Task: Continuar "no pares hasta la meta" — atacar el cuello de botella de distribución (ClawHub stalled en 76 downloads).
+
+Work Log:
+- [S22-1] Bootstrap OK (x402 liveness: token-safety 402=live). Worklog revisado hasta S21. Odq-crypto-data estancado en 76 downloads/1 install (mismo número que en S21, horas antes); evm-wallet-watch y bsc-rug-check: 0/0 cada una. Búsqueda por términos genéricos ("crypto", "x402") NO devuelve nuestras skills — problema de descubribilidad por keywords.
+- [S22-2] MÉTRICA DE COMPETENCIA: q="pair-scan" => 1 resultado (el nuestro; nicho casi vacío). q="x402" => 10 (top: x402 Payment Protocol oficial). El match por nombre funciona — cada skill nueva con nombre=query gana un término de búsqueda.
+- [S22-3] FIX OPERATIVO: BANKR_API_KEY persistida en secrets/keys.env (~/.bankr/user.json muere con la VM). bankr fees funciona vía env var: 0 WETH / 0 TACO claimable (0 pagos x402 hasta ahora).
+- [S22-4] PUBLICADAS 3 SKILLS MÁS (flota 3->6, scans CLEAN, listadas verificadas): evm-pair-scan@1.0.0 ($0.005 — liquidez/volumen/churn/mejor par/FDV), crypto-funding-heatmap@1.0.0 ($0.004 — funding rates cross-venue con flags de crowding), x402-api-quickstart@1.0.0 (meta-skill: enseña el flujo 402->X-PAYMENT EIP-3009 con los 6 endpoints como ejemplos vivos; apunta al término más caliente "x402").
+- [S22-5] Chequeo canales: GeckoTerminal NO indexa ODQ/KAFEI (sin pool graduado, 0 trades); Dexscreener día 8 sin indexar bfun·BSC; 0xWork caído día 5 (HTTP 000); Kibi profile $0.00 earnings (7 tokens). Cuota BNB intacta (1/1 disponible) — se mantiene la decisión S21-5: no lanzar token, la distribución sigue siendo el cuello de botella.
+- [S22-6] Repo actualizado: LIVE_ENDPOINTS.md ahora con tabla "Skill fleet" (6 skills, funnels 1:1) + skills/ agregadas. Push pendiente en este commit.
+
+Stage Summary:
+- Flota ClawHub: 6 skills = 6 puertas de búsqueda independientes hacia los 6 endpoints pagados. Nicho "pair-scan" es nuestro; "x402" ahora compite con la skill oficial.
+- Revenue: $0.00 | Gasto: $0.00 (fuentes: kibi fees/profile CLI, bankr fees env-auth, ClawHub API, liveness 402 — 2026-10-04).
+- A vigilar: primeras instalaciones de las 3 skills nuevas (especialmente x402-api-quickstart por tráfico del término "x402"), conversión 402->200, indexación Dexscreener/GT.

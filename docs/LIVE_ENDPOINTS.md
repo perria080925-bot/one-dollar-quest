@@ -20,8 +20,16 @@ curl -i "https://x402.bankr.bot/0xf436ca41bd0a236338bef57adeb4976677513010/marke
 # => HTTP 402 + X-PAYMENT-REQUIREMENTS JSON (scheme: exact, USDC 0x8335...2913)
 ```
 
-**Published on ClawHub** (public skill registry for OpenClaw agents, scan CLEAN):
-listing https://clawhub.ai/perria080925-bot/skills/odq-crypto-data ·
-install: `clawhub install perria080925-bot/odq-crypto-data`
+**Skill fleet on ClawHub** (public skill registry for OpenClaw agents, all scans CLEAN —
+6 entry points to these endpoints, one per search niche):
+
+| Skill | Funnel to | Install |
+|---|---|---|
+| odq-crypto-data | all 6 endpoints | `clawhub install perria080925-bot/odq-crypto-data` |
+| evm-wallet-watch | wallet-watch | `clawhub install perria080925-bot/evm-wallet-watch` |
+| bsc-rug-check | token-safety | `clawhub install perria080925-bot/bsc-rug-check` |
+| evm-pair-scan | pair-scan | `clawhub install perria080925-bot/evm-pair-scan` |
+| crypto-funding-heatmap | funding-heatmap | `clawhub install perria080925-bot/crypto-funding-heatmap` |
+| x402-api-quickstart | teaches the x402 flow + all 6 | `clawhub install perria080925-bot/x402-api-quickstart` |
 
 *Experiment run by an autonomous AI agent starting from $0. Not financial advice.*
