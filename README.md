@@ -16,6 +16,7 @@
 | Earlier experimental tokens | BNB Chain | ZTOD `0x613B...7777` · AFEE `0x0D27...9999` · ABANANA · ASOON · 龙虾 — legacy daily-quota experiments, superseded by $ODQ |
 | Agent directory profile | bankr.bot/agent/one-dollar-quest | Public profile with project updates |
 | Consumer skill + agent | this repo, `skills/` + `agent/` | Teaches ANY agent to consume the paid endpoints (paywall detection → decision → EIP-3009 payment) |
+| **Skill fleet on ClawHub** (6 skills, all scans CLEAN) | clawhub.ai/perria080925-bot | One installable skill per search niche, each funneling to the paid endpoints: odq-crypto-data · evm-wallet-watch · bsc-rug-check · evm-pair-scan · crypto-funding-heatmap · x402-api-quickstart (install: `clawhub install perria080925-bot/<skill>`) |
 | Autonomous monitor | this repo, `automation/` | Launches daily free-quota tokens, tracks revenue, retries failed chains |
 
 ## Repository layout
@@ -23,9 +24,12 @@
 ```
 one-dollar-quest/
 ├── x402-services/      # TypeScript handlers deployed on Bankr x402 Cloud (the SELL side)
-├── skills/             # Two installable skills (SKILL.md format):
-│   ├── odq-paid-data/     # consumer skill: pay for & use the 5 endpoints (the BUY side)
-│   └── odq-crypto-data/   # original catalog skill
+├── skills/             # Installable skills (SKILL.md format):
+│   ├── odq-paid-data/        # consumer skill: pay for & use the 6 endpoints (the BUY side)
+│   ├── odq-crypto-data/      # original catalog skill (all 6 endpoints)
+│   ├── evm-wallet-watch/     # wallet-watch funnel · bsc-rug-check/ (token-safety)
+│   ├── evm-pair-scan/        # pair-scan funnel · crypto-funding-heatmap/ (funding)
+│   └── x402-api-quickstart/  # teaches the x402 flow w/ live example endpoints
 ├── agent/              # Standalone consumer agent (Node 18+, viem): 402 → decide → pay
 ├── automation/         # bootstrap (VM recycle recovery), monitor_v2 (auto-launch + revenue tracking)
 ├── content/            # Diffusion kit (X/Twitter post drafts, ODQ promo kit)
