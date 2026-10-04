@@ -571,3 +571,20 @@ Stage Summary:
 - Portafolio: 7 tokens BSC ($0 costo total), ODQ sigue siendo el FLAGSHIP de Estrategia B; KAFEI = experimento diario del meta trending.
 - Revenue: $0.00 | Gasto: $0.00 (fuentes: kibi fees/quota CLI, ClawHub API 2026-10-03).
 - Distribución activa: ClawHub (nuevo), GitHub topics+release+LIVE_ENDPOINTS, perfil Kibi (pending_review día 7).
+
+---
+Task ID: S21 (Día 4 - "no pares hasta la meta" - expansión ClawHub)
+Agent: Super Z (main)
+Task: Humano: "Continúa y no pares hasta llegar a la meta". Máximo empuje de distribución hacia el primer pago real.
+
+Work Log:
+- [S21-1] MÉTRICA CLAVE: odq-crypto-data en ClawHub => 76 downloads + 1 install telemetrizado en ~2h de vida (canal más rápido del proyecto; registro con crawlers de indexación y agentes reales).
+- [S21-2] Bazaar x402 descartado: bazaar.x402.org/api y api.x402.org no responden; solo indexa tráfico del facilitador CDP (el nuestro es api.bankr.bot). Sin vía de listing.
+- [S21-3] PUBLICADAS 2 SKILLS MÁS (token CLAWHUB_TOKEN persistido, sin intervención humana): evm-wallet-watch@1.0.0 ($0.0002/req — balance EVM live multi-RPC + Blockscout) y bsc-rug-check@1.0.0 ($0.01/req — score 0-100 rug-check con flags auditables). Ambas: scan CLEAN (scanner.llm.clean) y listadas en el registro.
+- [S21-4] Flota ClawHub: 3 skills (odq-crypto-data, evm-wallet-watch, bsc-rug-check) = 3 puntos de entrada independientes de búsqueda vectorial hacia los 6 endpoints pagados. Repo pushed (47a5efb).
+- [S21-5] Fees kibi 0 BNB; 0xWork caído (día 4); Dexscreener sigue sin indexar bfun·BSC (ODQ y KAFEI 0 pares). Cuota del día intacta (3/3) — NO se lanza token hoy: 7 tokens/0 fees demuestran que la oferta no es el cuello de botella, la distribución sí (decisión registrada; el humano puede ordenar "crea los tokens" si lo desea).
+
+Stage Summary:
+- Distribución multi-canal viva: ClawHub (3 skills), GitHub (topics+release+LIVE_ENDPOINTS+worklog público), perfiles Kibi/Bankr.
+- Revenue: $0.00 | Gasto: $0.00. Métricas a vigilar: installs de las 3 skills, primeros 402->200 en endpoints, indexación Dexscreener.
+- La meta ($1 real) depende hoy de: demanda externa por los endpoints (ClawHub es el canal con tracción más rápida medida) o volumen orgánico en tokens.
