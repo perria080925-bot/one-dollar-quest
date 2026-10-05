@@ -648,3 +648,23 @@ Stage Summary:
 - TRÁFICO REAL por primera vez: 388 installs de skills que enseñan a PAGAR nuestros endpoints. Conversión a llamadas pagadas = métrica crítica a vigilar.
 - Revenue: $0.00 | Gasto: $0.00 (fuentes: kibi fees/profile CLI, bankr fees CLI, ClawHub API 2026-10-04 21:56 UTC).
 - Asks humanos acumulados (1 click c/u): (1) abrir PR del catálogo via compare URL, (2) subir permisos de API key en bankr.bot/api-keys para que yo pueda actualizar el perfil y someterlo a revisión del directorio.
+Stage Summary:
+- TRÁFICO REAL por primera vez: 388 installs de skills que enseñan a PAGAR nuestros endpoints. Conversión a llamadas pagadas = métrica crítica a vigilar.
+- Revenue: $0.00 | Gasto: $0.00 (fuentes: kibi fees/profile CLI, bankr fees CLI, ClawHub API 2026-10-04 21:56 UTC).
+- Asks humanos acumulados (1 click c/u): (1) abrir PR del catálogo via compare URL, (2) subir permisos de API key en bankr.bot/api-keys para que yo pueda actualizar el perfil y someterlo a revisión del directorio.
+
+---
+Task ID: S24 (Día 5 - tokens de hoy + ruta $1)
+Agent: Super Z (main)
+Task: Humano: "Ya creaste los tokens de hoy? Haz una ruta para generar ingresos con una inversión de 1 dólar en los agentes de IA para hacer trading".
+
+Work Log:
+- [S24-1] Tokens de hoy NO estaban creados (decisión S21-5); el humano los pidió => día 5, cuota fresca 1/1 BNB. Bootstrap OK.
+- [S24-2] TREND SCAN (GeckoTerminal BSC new_pools): 牢猫 $19.7K vol (meme 牢), 属兔 $572 (zodiaco). ELECCIÓN: 属马 SHUMA (Año del Caballo 2026) - palabra zodiacal genérica, meta CJK viral, sin impersonar. Logo AI generado (assets/shuma_logo.png) + pushed (raw 200).
+- [S24-3] LAUNCH BNB/bfun => FALLÓ ×2 (jobs 32555/32556): deployer sin gas - balance 0.0000964 BNB vs costo 0.000104 BNB (overshot 0.0000076 BNB ~ $0.005). Balances: 0 en TODAS las cadenas (EVM Main 0x8Db28e...FcCF41 vacío). La fábrica diaria de tokens está BLOQUEADA hasta un top-up de ~$0.02. Cuota del día NO consumida (los jobs fallaron pre-deploy).
+- [S24-4] RUTA $1 DISEÑADA (docs/RUTA_1USD.md, pushed): 4 fases honestas - F0 Combustible ($0.02 BNB gas + $0.95 USDC-Base), F1 Research propio x402 (<$0.05), F2 Trading asistido por agente (prediction markets prob>=75%, máx 2/día, stop -50%, meta 1.30-1.80x en 7d), F3 Reinversión 50/50 capital/infraestructura. Premisa honesta: $1 NO especula (fees se lo comen), DESBLOQUEA acciones que generan ingresos.
+- [S24-5] Dirección de top-up documentada: EVM Main 0x8Db28e7C564131d57A5eFA6373d829F4aAFcCF41 (kibi balances --json).
+
+Stage Summary:
+- Bloqueo crítico nuevo: gas deployer agotado (7 lanzamientos gratis agotaron la wallet) => pipeline de tokens diarios pausado; solución cuesta ~$0.02 y está integrada como Fase 0 de la ruta $1.
+- Revenue: $0.00 | Gasto: $0.00. Flota ClawHub: 388 installs. Asks humanos vigentes: abrir PR catálogo, subir permisos API key, y (NUEVO) aprobar Fase 0 con $1 si quiere activar la ruta.
