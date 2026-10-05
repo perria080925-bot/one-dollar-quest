@@ -675,3 +675,19 @@ Stage Summary:
 - Sin inversión no hay palanca nueva de gas; la única vía viva sigue siendo distribución ClawHub. Ejecutada: flota ampliada a 8 skills cubriendo los 6 endpoints + 2 nichos de búsqueda adicionales.
 - Asks humanos sin cambios (1 click c/u): (1) abrir PR del catálogo Bankr (compare URL en S23), (2) subir permisos de API key en bankr.bot/api-keys, (3) opcional Fase 0 ($0.02) - ahora EN PAUSA por modo sin inversión.
 - Métrica crítica a vigilar: primera conversión 402->200 desde installs de skills.
+---
+Task ID: S27 (Día 5d - "Continúa y no pares")
+Agent: Super Z (main)
+Task: Humano: "Continúa y no pares" - máxima presión $0 sobre todos los canales.
+
+Work Log:
+- [S27-1] Chequeo fresco: gas 0 en todas las wallets; kibi fees 0 BNB (auto-distribuidos, nada aún); 0xWork y Nookplot ambos HTTP 000 (día 7/2); Dexscreener 0 pairs para ODQ; GeckoTerminal 404. Ningún cambio favorable en el exterior.
+- [S27-2] NUEVO FRENTE CATÁLOGO BANKR: intento de ISSUE en BankrBot/skills con PAT => 403 (fine-grained PAT no puede ni issues en terceros). PERO: DESCUBIERTA la API de submission de skills - GET api.bankr.bot/skills con mi key devuelve {"success":true,"skills":[]} y el POST falla ÚNICAMENTE por key read-only ("Update your API key permissions at bankr.bot/api-keys"). => Con el upgrade de la key (ask humano #2 ya pendiente) podré someter la skill al catálogo DIRECTAMENTE por API, sin depender del PR de GitHub. El ask #2 ahora vale doble.
+- [S27-3] FLOTA 8->9: publicada token-pretrade-check - workflow de 3 pasos (token-safety $0.01 -> pair-scan $0.005 -> market-signal $0.0005) con gates de decisión ("score <50 => stop", "liq <$10K => size down", "RSI>75 + dead-cross => esperar"). Nicho nuevo genuino: checklist pre-trade, no duplicado de ninguna existente.
+- [S27-4] docs/LIVE_ENDPOINTS.md actualizado (9 skills) + descripción crypto-sentinel corregida. Push a GitHub (669559e -> HEAD).
+- [S27-5] Revenue: $0.00 | Gasto: $0.00.
+
+Stage Summary:
+- Flota en 9 skills: 6 endpoints cubiertos + 1 multi-endpoint + 1 tutorial + 1 workflow. Cada skill = un término de búsqueda independiente. Táctica de crecimiento validada, sin inversión posible por ahora.
+- Ask #2 (upgrade API key bankr.bot/api-keys) ahora desbloquea DOS cosas: perfil editable + submission directa al catálogo por API.
+- Métrica crítica sin cambios: primera conversión 402->200.

@@ -21,7 +21,7 @@ curl -i "https://x402.bankr.bot/0xf436ca41bd0a236338bef57adeb4976677513010/marke
 ```
 
 **Skill fleet on ClawHub** (public skill registry for OpenClaw agents, all scans CLEAN —
-8 entry points to these endpoints, one per search niche):
+9 entry points to these endpoints, one per search niche):
 
 | Skill | Funnel to | Install |
 |---|---|---|
@@ -32,6 +32,7 @@ curl -i "https://x402.bankr.bot/0xf436ca41bd0a236338bef57adeb4976677513010/marke
 | crypto-funding-heatmap | funding-heatmap | `clawhub install perria080925-bot/crypto-funding-heatmap` |
 | crypto-momentum-signals | market-signal | `clawhub install perria080925-bot/crypto-momentum-signals` |
 | perp-market-regime | crypto-sentinel | `clawhub install perria080925-bot/perp-market-regime` |
+| token-pretrade-check | 3-step workflow (safety+liquidity+momentum) | `clawhub install perria080925-bot/token-pretrade-check` |
 | x402-api-quickstart | teaches the x402 flow + all 6 | `clawhub install perria080925-bot/x402-api-quickstart` |
 
 *Experiment run by an autonomous AI agent starting from $0. Not financial advice.*
