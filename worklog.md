@@ -668,3 +668,28 @@ Work Log:
 Stage Summary:
 - Bloqueo crítico nuevo: gas deployer agotado (7 lanzamientos gratis agotaron la wallet) => pipeline de tokens diarios pausado; solución cuesta ~$0.02 y está integrada como Fase 0 de la ruta $1.
 - Revenue: $0.00 | Gasto: $0.00. Flota ClawHub: 388 installs. Asks humanos vigentes: abrir PR catálogo, subir permisos API key, y (NUEVO) aprobar Fase 0 con $1 si quiere activar la ruta.
+- [S24-3] LAUNCH BNB/bfun => FALLÓ ×2 (jobs 32555/32556): deployer sin gas - balance 0.0000964 BNB vs costo 0.000104 BNB (overshot 0.0000076 BNB ~ $0.005). Balances: 0 en TODAS las cadenas (EVM Main 0x8Db28e...FcCF41 vacío). La fábrica diaria de tokens está BLOQUEADA hasta un top-up de ~$0.02. Cuota del día NO consumida (los jobs fallaron pre-deploy).
+- [S24-4] RUTA $1 DISEÑADA (docs/RUTA_1USD.md, pushed): 4 fases honestas - F0 Combustible ($0.02 BNB gas + $0.95 USDC-Base), F1 Research propio x402 (<$0.05), F2 Trading asistido por agente (prediction markets prob>=75%, máx 2/día, stop -50%, meta 1.30-1.80x en 7d), F3 Reinversión 50/50 capital/infraestructura. Premisa honesta: $1 NO especula (fees se lo comen), DESBLOQUEA acciones que generan ingresos.
+- [S24-5] Dirección de top-up documentada: EVM Main 0x8Db28e7C564131d57A5eFA6373d829F4aAFcCF41 (kibi balances --json).
+
+Stage Summary:
+- Bloqueo crítico nuevo: gas deployer agotado (7 lanzamientos gratis agotaron la wallet) => pipeline de tokens diarios pausado; solución cuesta ~$0.02 y está integrada como Fase 0 de la ruta $1.
+- Revenue: $0.00 | Gasto: $0.00. Flota ClawHub: 388 installs. Asks humanos vigentes: abrir PR catálogo, subir permisos API key, y (NUEVO) aprobar Fase 0 con $1 si quiere activar la ruta.
+
+---
+Task ID: S25 (Día 5b - caza activa de ingresos gasless)
+Agent: Super Z (main)
+Task: Humano: "Ya enviaste los tokens de hoy o buscaste alguna manera de obtener ingresos". Respuesta: tokens siguen bloqueados por gas; caza exhaustiva de canales gasless ejecutada.
+
+Work Log:
+- [S25-1] GAS CHECK: 0 BNB/ETH en todas las wallets (nadie envió top-up). SHUMA sigue sin poder lanzarse (2 jobs 32555/32556 fallidos por 0.0000076 BNB). Cuota BNB intacta.
+- [S25-2] GITLAWB (bounties Ed25519 sin gas EVM): CLI @gitlawb/gl v0.7.1 instalado (requirió npm allow-scripts + postinstall manual), DID creado y registrado: did:key:z6MkfGobAVhu21LvsVjoaCU2rSUdgQ5MrFy4LSdK9VRLuTVN (trust 0.05). bounty list --status open => 0 bounties (red nueva, economía vacía). Identidad queda lista para cuando crezca.
+- [S25-3] NOOKPLOT (Base, relayer paga gas via ERC-2771): wallet firmante EVM generada localmente (0xb960C641c01C8171d156269EA89e442bf48c177f, clave en secrets/nookplot_wallet.json), agente registrado con firma EIP-191 => API key nk_2AP... persistida. DID: did:nookplot:0xb960....
+- [S25-4] BOUNTIES NOOKPLOT AUDITADOS: 20 abiertos, TODOS vencidos (deadlines pasaron) y pagando en $NOOK 0xb233... ($0.00000232/token, liq $135K): rewards de $0.0006 a $0.065. El #106 (QA sobre issues de expressjs/express) analizado a fondo: metadata resuelta vía Pinata, QA ejecutado (issue #7391 CLOSED vs "open" reclamado, #7362/#7352 abiertos OK) PERO deadline vencida 2026-08-02 y creator es un test "first prod run" => NO se submittea (trabajo honesto no se regala a un bounty muerto). Pipeline prepare-sign-relay VALIDADO técnicamente para bounties reales futuros.
+- [S25-5] LITCOIN comprehension mining: mapeado - requiere BANKR_API_KEY con WRITE access + ETH en Base para gas => bloqueado por los mismos 2 asks humanos pendientes.
+- [S25-6] Verificación final: ClawHub odq-crypto-data 81, evm-pair-scan 66, x402-api-quickstart 66 (flota ~392 installs). bankr fees: 0 WETH claimable. 0xWork: día 6 caído.
+
+Stage Summary:
+- 2 identidades nuevas registradas gratis (gitlawb DID + Nookplot DID/API) y 1 wallet firmante para relayers gasless - infraestructura de cobro lista cuando haya bounties reales.
+- Veredicto honesto: HOY no existe ningún bounty/marketplace vivo que pague >$1 sin gastar; los ingresos siguen dependiendo de (a) conversión de las ~392 installs ClawHub, (b) PR al catálogo Bankr (1 click), (c) permisos API key write (1 click), (d) $0.02 de gas para resucitar tokens diarios.
+- Revenue: $0.00 | Gasto: $0.00 (2026-10-05 03:0x UTC).
