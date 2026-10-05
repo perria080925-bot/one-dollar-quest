@@ -588,34 +588,10 @@ Stage Summary:
 - Distribución multi-canal viva: ClawHub (3 skills), GitHub (topics+release+LIVE_ENDPOINTS+worklog público), perfiles Kibi/Bankr.
 - Revenue: $0.00 | Gasto: $0.00. Métricas a vigilar: installs de las 3 skills, primeros 402->200 en endpoints, indexación Dexscreener.
 - La meta ($1 real) depende hoy de: demanda externa por los endpoints (ClawHub es el canal con tracción más rápida medida) o volumen orgánico en tokens.
-- [S21-1] MÉTRICA CLAVE: odq-crypto-data en ClawHub => 76 downloads + 1 install telemetrizado en ~2h de vida (canal más rápido del proyecto; registro con crawlers de indexación y agentes reales).
-- [S21-2] Bazaar x402 descartado: bazaar.x402.org/api y api.x402.org no responden; solo indexa tráfico del facilitador CDP (el nuestro es api.bankr.bot). Sin vía de listing.
-- [S21-3] PUBLICADAS 2 SKILLS MÁS (token CLAWHUB_TOKEN persistido, sin intervención humana): evm-wallet-watch@1.0.0 ($0.0002/req — balance EVM live multi-RPC + Blockscout) y bsc-rug-check@1.0.0 ($0.01/req — score 0-100 rug-check con flags auditables). Ambas: scan CLEAN (scanner.llm.clean) y listadas en el registro.
-- [S21-4] Flota ClawHub: 3 skills (odq-crypto-data, evm-wallet-watch, bsc-rug-check) = 3 puntos de entrada independientes de búsqueda vectorial hacia los 6 endpoints pagados. Repo pushed (47a5efb).
-- [S21-5] Fees kibi 0 BNB; 0xWork caído (día 4); Dexscreener sigue sin indexar bfun·BSC (ODQ y KAFEI 0 pares). Cuota del día intacta (3/3) — NO se lanza token hoy: 7 tokens/0 fees demuestran que la oferta no es el cuello de botella, la distribución sí (decisión registrada; el humano puede ordenar "crea los tokens" si lo desea).
-
-Stage Summary:
-- Distribución multi-canal viva: ClawHub (3 skills), GitHub (topics+release+LIVE_ENDPOINTS+worklog público), perfiles Kibi/Bankr.
-- Revenue: $0.00 | Gasto: $0.00. Métricas a vigilar: installs de las 3 skills, primeros 402->200 en endpoints, indexación Dexscreener.
-- La meta ($1 real) depende hoy de: demanda externa por los endpoints (ClawHub es el canal con tracción más rápida medida) o volumen orgánico en tokens.
 
 ---
 Task ID: S22 (Día 4b - flota de skills completa: 6 puntos de entrada)
 Agent: Super Z (main)
-Task: Continuar "no pares hasta la meta" — atacar el cuello de botella de distribución (ClawHub stalled en 76 downloads).
-
-Work Log:
-- [S22-1] Bootstrap OK (x402 liveness: token-safety 402=live). Worklog revisado hasta S21. Odq-crypto-data estancado en 76 downloads/1 install (mismo número que en S21, horas antes); evm-wallet-watch y bsc-rug-check: 0/0 cada una. Búsqueda por términos genéricos ("crypto", "x402") NO devuelve nuestras skills — problema de descubribilidad por keywords.
-- [S22-2] MÉTRICA DE COMPETENCIA: q="pair-scan" => 1 resultado (el nuestro; nicho casi vacío). q="x402" => 10 (top: x402 Payment Protocol oficial). El match por nombre funciona — cada skill nueva con nombre=query gana un término de búsqueda.
-- [S22-3] FIX OPERATIVO: BANKR_API_KEY persistida en secrets/keys.env (~/.bankr/user.json muere con la VM). bankr fees funciona vía env var: 0 WETH / 0 TACO claimable (0 pagos x402 hasta ahora).
-- [S22-4] PUBLICADAS 3 SKILLS MÁS (flota 3->6, scans CLEAN, listadas verificadas): evm-pair-scan@1.0.0 ($0.005 — liquidez/volumen/churn/mejor par/FDV), crypto-funding-heatmap@1.0.0 ($0.004 — funding rates cross-venue con flags de crowding), x402-api-quickstart@1.0.0 (meta-skill: enseña el flujo 402->X-PAYMENT EIP-3009 con los 6 endpoints como ejemplos vivos; apunta al término más caliente "x402").
-- [S22-5] Chequeo canales: GeckoTerminal NO indexa ODQ/KAFEI (sin pool graduado, 0 trades); Dexscreener día 8 sin indexar bfun·BSC; 0xWork caído día 5 (HTTP 000); Kibi profile $0.00 earnings (7 tokens). Cuota BNB intacta (1/1 disponible) — se mantiene la decisión S21-5: no lanzar token, la distribución sigue siendo el cuello de botella.
-- [S22-6] Repo actualizado: LIVE_ENDPOINTS.md ahora con tabla "Skill fleet" (6 skills, funnels 1:1) + skills/ agregadas. Push pendiente en este commit.
-
-Stage Summary:
-- Flota ClawHub: 6 skills = 6 puertas de búsqueda independientes hacia los 6 endpoints pagados. Nicho "pair-scan" es nuestro; "x402" ahora compite con la skill oficial.
-- Revenue: $0.00 | Gasto: $0.00 (fuentes: kibi fees/profile CLI, bankr fees env-auth, ClawHub API, liveness 402 — 2026-10-04).
-- A vigilar: primeras instalaciones de las 3 skills nuevas (especialmente x402-api-quickstart por tráfico del término "x402"), conversión 402->200, indexación Dexscreener/GT.
 Task: Continuar "no pares hasta la meta" — atacar el cuello de botella de distribución (ClawHub stalled en 76 downloads).
 
 Work Log:
@@ -648,10 +624,6 @@ Stage Summary:
 - TRÁFICO REAL por primera vez: 388 installs de skills que enseñan a PAGAR nuestros endpoints. Conversión a llamadas pagadas = métrica crítica a vigilar.
 - Revenue: $0.00 | Gasto: $0.00 (fuentes: kibi fees/profile CLI, bankr fees CLI, ClawHub API 2026-10-04 21:56 UTC).
 - Asks humanos acumulados (1 click c/u): (1) abrir PR del catálogo via compare URL, (2) subir permisos de API key en bankr.bot/api-keys para que yo pueda actualizar el perfil y someterlo a revisión del directorio.
-Stage Summary:
-- TRÁFICO REAL por primera vez: 388 installs de skills que enseñan a PAGAR nuestros endpoints. Conversión a llamadas pagadas = métrica crítica a vigilar.
-- Revenue: $0.00 | Gasto: $0.00 (fuentes: kibi fees/profile CLI, bankr fees CLI, ClawHub API 2026-10-04 21:56 UTC).
-- Asks humanos acumulados (1 click c/u): (1) abrir PR del catálogo via compare URL, (2) subir permisos de API key en bankr.bot/api-keys para que yo pueda actualizar el perfil y someterlo a revisión del directorio.
 
 ---
 Task ID: S24 (Día 5 - tokens de hoy + ruta $1)
@@ -661,13 +633,6 @@ Task: Humano: "Ya creaste los tokens de hoy? Haz una ruta para generar ingresos 
 Work Log:
 - [S24-1] Tokens de hoy NO estaban creados (decisión S21-5); el humano los pidió => día 5, cuota fresca 1/1 BNB. Bootstrap OK.
 - [S24-2] TREND SCAN (GeckoTerminal BSC new_pools): 牢猫 $19.7K vol (meme 牢), 属兔 $572 (zodiaco). ELECCIÓN: 属马 SHUMA (Año del Caballo 2026) - palabra zodiacal genérica, meta CJK viral, sin impersonar. Logo AI generado (assets/shuma_logo.png) + pushed (raw 200).
-- [S24-3] LAUNCH BNB/bfun => FALLÓ ×2 (jobs 32555/32556): deployer sin gas - balance 0.0000964 BNB vs costo 0.000104 BNB (overshot 0.0000076 BNB ~ $0.005). Balances: 0 en TODAS las cadenas (EVM Main 0x8Db28e...FcCF41 vacío). La fábrica diaria de tokens está BLOQUEADA hasta un top-up de ~$0.02. Cuota del día NO consumida (los jobs fallaron pre-deploy).
-- [S24-4] RUTA $1 DISEÑADA (docs/RUTA_1USD.md, pushed): 4 fases honestas - F0 Combustible ($0.02 BNB gas + $0.95 USDC-Base), F1 Research propio x402 (<$0.05), F2 Trading asistido por agente (prediction markets prob>=75%, máx 2/día, stop -50%, meta 1.30-1.80x en 7d), F3 Reinversión 50/50 capital/infraestructura. Premisa honesta: $1 NO especula (fees se lo comen), DESBLOQUEA acciones que generan ingresos.
-- [S24-5] Dirección de top-up documentada: EVM Main 0x8Db28e7C564131d57A5eFA6373d829F4aAFcCF41 (kibi balances --json).
-
-Stage Summary:
-- Bloqueo crítico nuevo: gas deployer agotado (7 lanzamientos gratis agotaron la wallet) => pipeline de tokens diarios pausado; solución cuesta ~$0.02 y está integrada como Fase 0 de la ruta $1.
-- Revenue: $0.00 | Gasto: $0.00. Flota ClawHub: 388 installs. Asks humanos vigentes: abrir PR catálogo, subir permisos API key, y (NUEVO) aprobar Fase 0 con $1 si quiere activar la ruta.
 - [S24-3] LAUNCH BNB/bfun => FALLÓ ×2 (jobs 32555/32556): deployer sin gas - balance 0.0000964 BNB vs costo 0.000104 BNB (overshot 0.0000076 BNB ~ $0.005). Balances: 0 en TODAS las cadenas (EVM Main 0x8Db28e...FcCF41 vacío). La fábrica diaria de tokens está BLOQUEADA hasta un top-up de ~$0.02. Cuota del día NO consumida (los jobs fallaron pre-deploy).
 - [S24-4] RUTA $1 DISEÑADA (docs/RUTA_1USD.md, pushed): 4 fases honestas - F0 Combustible ($0.02 BNB gas + $0.95 USDC-Base), F1 Research propio x402 (<$0.05), F2 Trading asistido por agente (prediction markets prob>=75%, máx 2/día, stop -50%, meta 1.30-1.80x en 7d), F3 Reinversión 50/50 capital/infraestructura. Premisa honesta: $1 NO especula (fees se lo comen), DESBLOQUEA acciones que generan ingresos.
 - [S24-5] Dirección de top-up documentada: EVM Main 0x8Db28e7C564131d57A5eFA6373d829F4aAFcCF41 (kibi balances --json).
@@ -693,3 +658,20 @@ Stage Summary:
 - 2 identidades nuevas registradas gratis (gitlawb DID + Nookplot DID/API) y 1 wallet firmante para relayers gasless - infraestructura de cobro lista cuando haya bounties reales.
 - Veredicto honesto: HOY no existe ningún bounty/marketplace vivo que pague >$1 sin gastar; los ingresos siguen dependiendo de (a) conversión de las ~392 installs ClawHub, (b) PR al catálogo Bankr (1 click), (c) permisos API key write (1 click), (d) $0.02 de gas para resucitar tokens diarios.
 - Revenue: $0.00 | Gasto: $0.00 (2026-10-05 03:0x UTC).
+---
+Task ID: S26 (Día 5c - "Continúa sin inversión")
+Agent: Super Z (main)
+Task: Humano: "Continúa sin inversión" - continuar la búsqueda de ingresos sin ningún aporte humano.
+
+Work Log:
+- [S26-1] Bootstrap OK. Gas: 0 BNB/ETH/USDC en todas las wallets (nadie envió top-up; modo sin inversión confirmado). SHUMA sigue en pausa por gas.
+- [S26-2] Métricas frescas de flota (API v1 ClawHub): 400 installs totales (+8 desde S25): odq-crypto-data 81, evm-pair-scan 66, x402-api-quickstart 66, crypto-funding-heatmap 65, evm-wallet-watch 62, bsc-rug-check 60. Curva desacelerando (+8/12h tras el spike inicial +412%) => la jugada correcta es replicar el mecanismo que funcionó: skill nueva = nicho de búsqueda nuevo.
+- [S26-3] FLOTA 6->8: publicadas crypto-momentum-signals (funnel a market-signal: RSI-14/SMA7-25/vol anualizada) y perp-market-regime (funnel a crypto-sentinel: funding APR/vol regime/crowding BTC-ETH-SOL). Con esto TODOS los 6 endpoints tienen skill dedicada y el funnel queda completo. Scans pendientes de approval (flujo normal del registry).
+- [S26-4] Boards de bounties re-auditados: 0xWork día 7 caído (HTTP 000), Nookplot API ahora también HTTP 000 (caído desde S25), gitlawb 0 bounties abiertos. Cero mercados vivos que paguen sin gas.
+- [S26-5] Liveness x402 verificado (pair-scan 402, crypto-sentinel 402, market-signal 402 = todos monetizados y respondiendo). docs/LIVE_ENDPOINTS.md actualizado: tabla de flota 6->8 + descripción de crypto-sentinel corregida (era "Risk & anomaly screening", ahora el régimen perp real). Push a GitHub.
+- [S26-6] bankr fees: 0 WETH claimable. Revenue $0.00 | Gasto $0.00.
+
+Stage Summary:
+- Sin inversión no hay palanca nueva de gas; la única vía viva sigue siendo distribución ClawHub. Ejecutada: flota ampliada a 8 skills cubriendo los 6 endpoints + 2 nichos de búsqueda adicionales.
+- Asks humanos sin cambios (1 click c/u): (1) abrir PR del catálogo Bankr (compare URL en S23), (2) subir permisos de API key en bankr.bot/api-keys, (3) opcional Fase 0 ($0.02) - ahora EN PAUSA por modo sin inversión.
+- Métrica crítica a vigilar: primera conversión 402->200 desde installs de skills.
